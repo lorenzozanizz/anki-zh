@@ -3,7 +3,7 @@ from anki.cards import Card
 from aqt.reviewer import Reviewer
 
 
-def on_card_answered(reviewer: Reviewer, card: Card, ease: int) -> None:
+def on_card_answered(_reviewer: Reviewer, card: Card, ease: int) -> None:
     """
     Fires after the user rates a card.
     ease: 1=Again  2=Hard  3=Good  4=Easy
