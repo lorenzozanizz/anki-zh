@@ -15,13 +15,14 @@ _DEPS = [
 def ensure_deps() -> None:
     os.makedirs(_LIBS, exist_ok=True)
 
+    # Add libs to the path first, so installed packages are detected
+    if _LIBS not in sys.path:
+        sys.path.insert(0, _LIBS)
+
     missing = [pip for pip, imp in _DEPS if not _importable(imp)]
 
     if missing:
         _install(missing)
-
-    if _LIBS not in sys.path:
-        sys.path.insert(0, _LIBS)
 
 
 def _importable(name: str) -> bool:
